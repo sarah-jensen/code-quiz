@@ -1,26 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <header>
         <h1>Coding Quiz Challenge!</h1>
-        <p>Watch out: time will be deducted for incorrect answers. Press start to begin.</p>
     </header>
-
     <main>
+        <!-- link to high scores -->
+        <section class="high-scores">High scores</section>
+
+        <!-- timer -->
         <section>
-            <div class = ></div>
+            <h3>Time Remaining:</h3>
+            <div class="timer"></div>
+        </section>
+
+        <!-- instructions and start button-->
+        <section class="get-started">
+            <h2>Keep an eye on the timer!</h2>
+            <p>Press "start" to begin.</p>
+            <button class="start-button">START</button>
+        </section>
+
+        <!-- question box -->
+        <section>
+            <h3>Question Number</h3>
+            <p>Question text</p>
+            <button>Option 1</button>
+            <button>Option 2</button>
+            <button>Option 3</button>
+            <button>Option 4</button>
+            <p>Correct / Incorrect</p>
+        </section>
+
+        <!-- game over -->
+        <section class="game-over">
+            <h2>Game over!</h2>
+            <p>Enter your name to save your score.</p>
+            <textarea 
+            id="player-name" 
+            placeholder="your name here"
+            ></textarea>
+            <button class = "submit">Submit</button>
+            <button class = "retake-quiz">Retake Quiz</button>
+        </section>
+
+        <!-- high scores -->
+        <section class="high-scores">
+            <h2>Top 5 High Scores</h2>
+            <h4 class="first">Score - Player name</h4>
+            <h4 class="second">Score - Player name</h4>
+            <h4 class="third">Score - Player name</h4>
+            <h4 class="fourth">Score - Player name</h4>
+            <h4 class="fifth">Score - Player name</h4>
+            <button class = "retake-quiz">Retake Quiz</button>
         </section>
     </main>
-
-    <section> end and enter score</section>
-
-    <section>high scores</section>
-
+    <script src="script.js"></script>
 </body>
 </html>
