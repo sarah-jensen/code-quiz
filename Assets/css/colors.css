@@ -1,6 +1,8 @@
 :root {
 
-    --background-color: #413b63;
+    --background-color: #282441;
+    --text: #907d02;
+    --border: #0a0718;
     --card-text: #02573c;
     --card-background: #e6f1ff;
     --question-text: #030504;

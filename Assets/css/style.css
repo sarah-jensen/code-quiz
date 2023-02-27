@@ -1,3 +1,66 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text);
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    font-size: 40px;
+    padding-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.subheader {
+    display: flex;
+    margin-top: 5%;
+    margin-right: 5%;
+    margin-left: 5%;
+    justify-content: space-between;
+
+}
+
+.high-scores,
+.time-box {
+    height: 100px;
+    width: 100px;
+    border: 5px solid var(--border);
+    text-align: center;
+    padding: 5px
+}
+
+.high-scores {
+    padding-top: 20px;
+    font-size: 25px;
+}
+
+#timer {
+    border: 5px;
+    margin-top: 5px;
+    font-size: 30px; 
+}
+
+.get-started {
+    display: flex;
+    justify-content: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 60%;
+    width: 60%;
+    border: 5px solid var(--border);
+    text-align: center;
+}
+
+.get-started h2 {
+    font-size 25px;
+}
+
 /* where the timer goes
 
 where the high score link
@@ -14,3 +77,4 @@ high scores
     name list
     button for clear
     button for take quiz again
+dsafsdddsDd */
