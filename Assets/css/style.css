@@ -47,7 +47,51 @@ header {
 }
 
 .get-started {
-    display: flex;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 20em;;
+    width: 60%;
+    border: 5px solid var(--border);
+    text-align: center;
+    line-height: 2;
+}
+
+.get-started h2 {
+    font-size: 35px;
+}
+
+.get-started p {
+    font-size: 20px;
+}
+
+.start-button {
+    width: 20%;
+    height: 20%;
+    background-color: var(--button-color);
+    align-self: center;
+    
+}
+
+.questions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 20%;
+        margin-right: 20%;
+        height: 20em;
+        width: 60%;
+        border: 5px solid var(--border);
+        text-align: center;
+        line-height: 1.5;
+        display: 
+}
+
+.game-over {
+    display: none;
+    flex-direction: column;
     justify-content: center;
     margin-left: 20%;
     margin-right: 20%;
@@ -57,8 +101,16 @@ header {
     text-align: center;
 }
 
-.get-started h2 {
-    font-size 25px;
+.score {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 60%;
+    width: 60%;
+    border: 5px solid var(--border);
+    text-align: center;
 }
 
 /* where the timer goes
