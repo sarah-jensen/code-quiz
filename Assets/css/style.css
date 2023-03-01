@@ -45,7 +45,7 @@ header {
     margin-top: 5px;
     font-size: 30px;
     background-color: black;
-    color: white; 
+    color: whitesmoke; 
 }
 
 .get-started {
@@ -54,6 +54,7 @@ header {
     justify-content: center;
     margin-left: 20%;
     margin-right: 20%;
+    margin-top: 5%;
     height: 20em;;
     width: 60%;
     border: 5px solid var(--border);
@@ -78,11 +79,11 @@ header {
 }
 
 .questions {
-        /* display: flex;
-        flex-direction: column; */
+        display: none;
         align-content: left;
         margin-left: 20%;
         margin-right: 20%;
+        margin-top: 5%;
         height: 20em;
         width: 60%;
         border: 5px solid var(--border);
@@ -114,44 +115,51 @@ header {
 #flash-response {
     display:none;
 }
+
 .game-over {
     display: none;
-    flex-direction: column;
     justify-content: center;
     margin-left: 20%;
     margin-right: 20%;
+    margin-top: 5%;
     height: 60%;
     width: 60%;
     border: 5px solid var(--border);
     text-align: center;
+    line-height: 2.0;
+    font-size: 25px;
 }
+
+#player-name {
+    background-color: black;
+    color: whitesmoke
+}
+
+.submit,
+.retake-quiz {
+    background-color: var(--button-color);
+    font-size: 20px;
+}
+
 
 .score {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
+    display: block;
     margin-left: 20%;
     margin-right: 20%;
+    margin-top: 5%;
     height: 60%;
     width: 60%;
     border: 5px solid var(--border);
     text-align: center;
+    line-height: 1.5;
+    font-size: 28px;
 }
 
-/* where the timer goes
+.score h2 {
+    font-weight: bold;
+}
 
-where the high score link
-
-where the questions show up
-    card with the question and 4 buttons
-    alert for correct / incorrect
-    
-end game pop-up
-    name entry field
-    submit button
-
-high scores
-    name list
-    button for clear
-    button for take quiz again
-dsafsdddsDd */
+.rank {
+    padding-left: 5%;
+    text-align: left;
+}
