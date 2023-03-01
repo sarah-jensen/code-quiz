@@ -1,115 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Assets/css/reset.css">
-    <link rel="stylesheet" href="./Assets/css/colors.css">
-    <link rel="stylesheet" href="./Assets/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./Assets/css/reset.css" />
+    <link rel="stylesheet" href="./Assets/css/colors.css" />
+    <link rel="stylesheet" href="./Assets/css/style.css" />
     <title>Quiz Time</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1><b>Coding Quiz Challenge!</b></h1>
+      <h1><b>Coding Quiz Challenge!</b></h1>
     </header>
     <main>
-        <div class = "subheader">
+      <div class="subheader">
         <!-- link to high scores -->
         <section class="high-scores">
-            <h3>High Scores</h3>
+          <h3>High Scores</h3>
         </section>
 
         <!-- timer -->
-        <section class = "time-box">
-            <h3>Time Remaining:</h3>
-            <textarea 
-            id="timer" 
-            placeholder = "00"
-            rows = 1
-            cols = 1
-            ></textarea>
-            </div>
+        <section class="time-box">
+          <h3>Time Remaining:</h3>
+          <textarea id="timer" placeholder="00" rows="1" cols="1"></textarea>
         </section>
+      </div>
+
+      <!-- instructions and start button-->
+      <section class="get-started">
+        <h2>Keep an eye on the timer!</h2>
+        <p>Press "start" to begin.</p>
+        <button class="start-button">START</button>
+      </section>
+
+      <!-- question box -->
+      <section class="questions">
+        <div id="q1">
+          <p>Question 1</p>
+          <p>Question text</p>
+          <p><button class="q">Option 1</button>
+          </p>
+          <p><button class="q">Option 2</button>
+          </p>
+          <p><button class="q">Option 3</button>
+          </p>
+          <p><button class="q">Option 4</button>
+          </p>
         </div>
 
-        <!-- instructions and start button-->
-        <section class="get-started">
-            <h2>Keep an eye on the timer!</h2>
-            <p>
-                Press "start" to begin.
-            </p>
-            <button class="start-button">
-                START
-            </button>
-        </section>
+        <div id="q2">
+          <p>Question 2</p>
+          <p>Question text</p>
+          <button>Option 1</button>
+          <button>Option 2</button>
+          <button>Option 3</button>
+          <button>Option 4</button>
+        </div>
 
-        <!-- question box -->
-        <section class = "questions">
-            <div id = "q1">
-            <p>Question 1</p>
-            <p>Question text</p>
-            <button>Option 1</button>
-            <button>Option 2</button>
-            <button>Option 3</button>
-            <button>Option 4</button>
-            </div>
+        <div id="q3">
+          <p>Question 3</p>
+          <p>Question text</p>
+          <button>Option 1</button>
+          <button>Option 2</button>
+          <button>Option 3</button>
+          <button>Option 4</button>
+        </div>
 
-            <div id = "q2">
-            <p>Question 2</p>
-            <p>Question text</p>
-            <button>Option 1</button>
-            <button>Option 2</button>
-            <button>Option 3</button>
-            <button>Option 4</button>
-            </div>
+        <div id="q4">
+          <p>Question 4</p>
+          <p>Question text</p>
+          <button>Option 1</button>
+          <button>Option 2</button>
+          <button>Option 3</button>
+          <button>Option 4</button>
+        </div>
 
-            <div id = "q3">
-            <p>Question 3</p>
-            <p>Question text</p>
-            <button>Option 1</button>
-            <button>Option 2</button>
-            <button>Option 3</button>
-            <button>Option 4</button>
-            </div>
+        <p id="flash-response">Correct / Incorrect</p>
+      </section>
 
-            <div id = "q4">
-            <p>Question 4</p>
-            <p>Question text</p>
-            <button>Option 1</button>
-            <button>Option 2</button>
-            <button>Option 3</button>
-            <button>Option 4</button>
-            </div>
+      <!-- game over -->
+      <section class="game-over">
+        <h2>Game over!</h2>
+        <p>Enter your name to save your score.</p>
+        <textarea id="player-name" placeholder="your name here"></textarea>
+        <button class="submit">Submit</button>
+        <button class="retake-quiz">Retake Quiz</button>
+      </section>
 
-            <p id = "Flash-response">Correct / Incorrect</p>
-        </section>
-
-        <!-- game over -->
-        <section class="game-over">
-            <h2>Game over!</h2>
-            <p>Enter your name to save your score.</p>
-            <textarea 
-            id="player-name" 
-            placeholder="your name here"
-            ></textarea>
-            <button class = "submit">Submit</button>
-            <button class = "retake-quiz">Retake Quiz</button>
-        </section>
-
-        <!-- high scores -->
-        <section class="score">
-            <h2>Top 5 High Scores</h2>
-            <h4 class="first">Score - Player name</h4>
-            <h4 class="second">Score - Player name</h4>
-            <h4 class="third">Score - Player name</h4>
-            <h4 class="fourth">Score - Player name</h4>
-            <h4 class="fifth">Score - Player name</h4>
-            <button class = "retake-quiz">Retake Quiz</button>
-        </section>
+      <!-- high scores -->
+      <section class="score">
+        <h2>Top 5 High Scores</h2>
+        <h4 class="first">Score - Player name</h4>
+        <h4 class="second">Score - Player name</h4>
+        <h4 class="third">Score - Player name</h4>
+        <h4 class="fourth">Score - Player name</h4>
+        <h4 class="fifth">Score - Player name</h4>
+        <button class="retake-quiz">Retake Quiz</button>
+      </section>
     </main>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
