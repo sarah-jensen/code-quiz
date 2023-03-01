@@ -43,7 +43,9 @@ header {
 #timer {
     border: 5px;
     margin-top: 5px;
-    font-size: 30px; 
+    font-size: 30px;
+    background-color: black;
+    color: white; 
 }
 
 .get-started {
@@ -76,8 +78,8 @@ header {
 }
 
 .questions {
-        display: flex;
-        flex-direction: column;
+        /* display: flex;
+        flex-direction: column; */
         align-content: left;
         margin-left: 20%;
         margin-right: 20%;
@@ -89,6 +91,29 @@ header {
         display: 
 }
 
+.questions button {
+    background-color: var(--button-color);
+}
+
+#q1 {
+    display:block;
+}
+
+#q2 {
+    display:none;
+}
+
+#q3 {
+    display:none;
+}
+
+#q4 {
+    display:none;
+}
+
+#flash-response {
+    display:none;
+}
 .game-over {
     display: none;
     flex-direction: column;
