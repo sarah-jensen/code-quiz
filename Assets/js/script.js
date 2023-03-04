@@ -32,7 +32,7 @@ let questions = [
     correct: "CSS",
   },
   {
-    question: "To use a function in JavaSript, you must..."
+    question: "To use a function in JavaSript, you must...",
     answers: ["define the function", "call the function", "give a condition for the function", "a & b only"],
     correct: "a & b only",
   }
