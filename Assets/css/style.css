@@ -42,8 +42,12 @@ header {
 
 #timer {
     border: 5px;
-    margin-top: 5px;
+    height: 40px;
+    margin-top: 8px;
+    padding-top: 4px;
     font-size: 30px;
+    font-weight: bold;
+    text-align: center;
     background-color: black;
     color: whitesmoke; 
 }
@@ -80,7 +84,7 @@ header {
 }
 
 .questions {
-        display: block;
+        display: none;
         align-content: left;
         margin-left: 20%;
         margin-right: 20%;
@@ -94,22 +98,6 @@ header {
 
 .questions button {
     background-color: var(--button-color);
-}
-
-#q1 {
-    display:block;
-}
-
-#q2 {
-    display:none;
-}
-
-#q3 {
-    display:none;
-}
-
-#q4 {
-    display:none;
 }
 
 #flash-response {

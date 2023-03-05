@@ -10,6 +10,21 @@ let currentQuestion = 0;
 const timerEl = document.querySelector("#timer");
 let secondsLeft = 60;
 
+// sets the timer
+function setTime() {
+    startCard.style.display = "none";
+    questionCard.style.display = "block";
+    nextQuestion();
+    const timer = setInterval(function () {
+      secondsLeft--;
+      timerEl.innerHTML = secondsLeft;
+      if (secondsLeft === 0) {
+        clearInterval(timer);
+        endGame();
+      }
+    }, 1000);
+  }
+  
 // array of dynamically generated quiz question objects with question + answers + correct answer info
 let questions = [
   {
@@ -45,7 +60,7 @@ let questions = [
   },
 ];
 
-// creates the text outline for the question cards
+// creates template literal (HTML outline) for the question cards
 let HTML = `
   <div>
       <h2>
@@ -65,52 +80,37 @@ let HTML = `
       </button>
   </div>
     `;
+let choices = document.querySelectorAll(".choices");
+for (let i = 0; i < choices.length; i++) {
+  choices[i].addEventListener("click", checkAnswer);
+}
 
-// sets the timer
-function setTime() {
-  startCard.style.display = "none";
-  questionCard.style.display = "block";
-  nextQuestion();
-  const timer = setInterval(function () {
-    secondsLeft--;
-    timerEl.textContent = secondsLeft;
-    if (secondsLeft === 0) {
-      clearInterval(timer);
-      endGame();
-    }
-  }, 1000);
 
-  
 
-  //   progresses to the next question
-  function nextQuestion(event) {
-    //populates questions/answers
-    questionCard.innerHTML = HTML;
-    console.log(questions[currentQuestion]);
+//   progresses to the next question
+function nextQuestion(event) {
+  //populates questions/answers
+  questionCard.innerHTML = HTML;
+  console.log(questions[currentQuestion]);
+}
 
-    if (currentQuestion !== 0) {
-      console.log(event.target.innerText);
-      // console.log(questions[currentQuestion].correct);
-      if (event.target.innerText === questions[currentQuestion - 1].correct) {
-        alert("Correct!");
-      } //incorrect
-      else if (currentQuestion == questions.length) {
-        return;
-      }
-    
-
-      // "get question" implied loop driven by user click on buttons
-      //   presents next question
-      
-      let choices = document.querySelectorAll(".choices");
-      currentQuestion++;
-      for (i = 0; i < choices.length; i++) {
-        choices[i].addEventListener("click", nextQuestion);
-      }
-    }
+function checkAnswer() {
+  console.log(event.target.innerText);
+  // sets reaction when answer clicked
+  if (event.target.innerText === questions[currentQuestion].correct) {
+    alert("Correct!");
+    currentQuestion++;
+    // nextQuestion();
+  } else if (event.target.innerText !== questions[currentQuestion].correct) {
+    alert("Incorrect!");
+    currentQuestion++;
+    // nextQuestion();
+  } else if (currentQuestion === questions.length) {
+    endGame();
   }
 }
-// displays text field for username to log high score
+
+// displays "Game over" card
 function endGame() {
   questionCard.style.display = "none";
   gameOver.style.display = "block";
@@ -119,18 +119,25 @@ function endGame() {
 // event listener for "start" button
 startButton.addEventListener("click", setTime);
 
-// create elements, then set innerHTML, append
+// choices.addEventListener("click", checkAnswer);
 
+// if (currentQuestion !== 0) {
+//   console.log(event.target.innerText);
+//   // console.log(questions[currentQuestion].correct);
+//   if (event.target.innerText === questions[currentQuestion - 1].correct) {
+//     alert("Correct!");
+//   } //incorrect
+//   else if (currentQuestion == questions.length) {
+//     return;
+//   }
 
+// "get question" implied loop driven by user click on buttons
+//   presents next question
 
-// nextQuestion();
-//     currentQuestion++;
-
-// // template literal
-// let HTML = `
-//     <div>
-//         <p>
-//             ${questions[currentQuestion]}
-//         </p>
-//     </div>
-// `
+//       let choices = document.querySelectorAll(".choices");
+//       currentQuestion++;
+//       for (i = 0; i < choices.length; i++) {
+//         choices[i].addEventListener("click", nextQuestion);
+//       }
+//     }
+//   }
