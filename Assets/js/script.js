@@ -45,6 +45,27 @@ let questions = [
   },
 ];
 
+// creates the text outline for the question cards
+let HTML = `
+  <div>
+      <h2>
+          ${questions[currentQuestion].question}
+      </h2>
+      <button class = "choices">
+          ${questions[currentQuestion].answers[0]}
+      </button>
+      <button class = "choices">
+          ${questions[currentQuestion].answers[1]}
+      </button>
+      <button class = "choices">
+          ${questions[currentQuestion].answers[2]}
+      </button>
+      <button class = "choices">
+          ${questions[currentQuestion].answers[3]}
+      </button>
+  </div>
+    `;
+
 // sets the timer
 function setTime() {
   startCard.style.display = "none";
@@ -59,10 +80,14 @@ function setTime() {
     }
   }, 1000);
 
+  
+
   //   progresses to the next question
   function nextQuestion(event) {
-
+    //populates questions/answers
+    questionCard.innerHTML = HTML;
     console.log(questions[currentQuestion]);
+
     if (currentQuestion !== 0) {
       console.log(event.target.innerText);
       // console.log(questions[currentQuestion].correct);
@@ -72,29 +97,11 @@ function setTime() {
       else if (currentQuestion == questions.length) {
         return;
       }
-      // creates the appearance of the question cards
-      let HTML = `
-      <div>
-          <p>
-              ${questions[currentQuestion].question}
-          </p>
-          <button class = "choices">
-              ${questions[currentQuestion].answers[0]}
-          </button>
-          <button class = "choices">
-              ${questions[currentQuestion].answers[1]}
-          </button>
-          <button class = "choices">
-              ${questions[currentQuestion].answers[2]}
-          </button>
-          <button class = "choices">
-              ${questions[currentQuestion].answers[3]}
-          </button>
-      </div>
-  `;
+    
+
       // "get question" implied loop driven by user click on buttons
       //   presents next question
-      questionCards.innerHTML = HTML;
+      
       let choices = document.querySelectorAll(".choices");
       currentQuestion++;
       for (i = 0; i < choices.length; i++) {
@@ -105,15 +112,16 @@ function setTime() {
 }
 // displays text field for username to log high score
 function endGame() {
-  gameOver.setAttribute("display", "block");
-  questionCards.setAttribute("display", "none");
+  questionCard.style.display = "none";
+  gameOver.style.display = "block";
 }
+
 // event listener for "start" button
 startButton.addEventListener("click", setTime);
 
 // create elements, then set innerHTML, append
 
-// innerText for populating questions/answers
+
 
 // nextQuestion();
 //     currentQuestion++;
