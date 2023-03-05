@@ -1,8 +1,9 @@
 // button variables
 const startButton = document.querySelector("#start-button");
+const startCard = document.querySelector(".get-started");
 const highScores = document.querySelector(".high-scores");
 const gameOver = document.querySelector(".game-over");
-const questionCards = document.querySelector(".questions");
+const questionCard = document.querySelector(".questions");
 let currentQuestion = 0;
 
 // timer
@@ -12,7 +13,8 @@ let secondsLeft = 60;
 // array of dynamically generated quiz question objects with question + answers + correct answer info
 let questions = [
   {
-    question: "You can chain together actions/methods in which programming language?",
+    question:
+      "You can chain together actions/methods in which programming language?",
     answers: ["JavaScript", "Bootstrap", "CSS", "jQuery"],
     correct: "jQuery",
   },
@@ -32,27 +34,34 @@ let questions = [
     correct: "CSS",
   },
   {
-    question: "To use a function in JavaSript, you must..."
-    answers: ["define the function", "call the function", "give a condition for the function", "a & b only"],
+    question: "To use a function in JavaSript, you must...",
+    answers: [
+      "define the function",
+      "call the function",
+      "give a condition for the function",
+      "a & b only",
+    ],
     correct: "a & b only",
-  }
+  },
 ];
 
 // sets the timer
 function setTime() {
+  startCard.style.display = "none";
+  questionCard.style.display = "block";
   nextQuestion();
   const timer = setInterval(function () {
     secondsLeft--;
     timerEl.textContent = secondsLeft;
     if (secondsLeft === 0) {
       clearInterval(timer);
-      gameOver();
+      endGame();
     }
   }, 1000);
 
   //   progresses to the next question
   function nextQuestion(event) {
-    questionCards.setAttribute("display", "block");
+
     console.log(questions[currentQuestion]);
     if (currentQuestion !== 0) {
       console.log(event.target.innerText);
