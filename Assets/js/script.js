@@ -8,23 +8,8 @@ let currentQuestion = 0;
 
 // timer
 const timerEl = document.querySelector("#timer");
-let secondsLeft = 60;
+let secondsLeft = 10;
 
-// sets the timer
-function setTime() {
-    startCard.style.display = "none";
-    questionCard.style.display = "block";
-    nextQuestion();
-    const timer = setInterval(function () {
-      secondsLeft--;
-      timerEl.innerHTML = secondsLeft;
-      if (secondsLeft === 0) {
-        clearInterval(timer);
-        endGame();
-      }
-    }, 1000);
-  }
-  
 // array of dynamically generated quiz question objects with question + answers + correct answer info
 let questions = [
   {
@@ -80,28 +65,49 @@ let HTML = `
       </button>
   </div>
     `;
+
+questionCard.innerHTML = HTML;
+
 let choices = document.querySelectorAll(".choices");
+    currentQuestion++; //makes the current question !== 0
+// adds event listener to answer buttons
 for (let i = 0; i < choices.length; i++) {
   choices[i].addEventListener("click", checkAnswer);
+ 
 }
 
+// sets the timer
+function setTime() {
+    startCard.style.display = "none";
+    questionCard.style.display = "block";
+    // nextQuestion();
+    const timer = setInterval(function () {
+      secondsLeft--;
+      timerEl.innerHTML = secondsLeft;
+      if (secondsLeft === 0) {
+        clearInterval(timer);
+        endGame();
+      }
+    }, 1000);
+  }
+
+// progresses to the next question
+// function nextQuestion() {
+//     //populates questions/answers
+//     if (currentQuestion !== 0) {
+//     }
+//     console.log(questions[currentQuestion]);
+//   }
 
 
-//   progresses to the next question
-function nextQuestion(event) {
-  //populates questions/answers
-  questionCard.innerHTML = HTML;
-  console.log(questions[currentQuestion]);
-}
-
-function checkAnswer() {
+function checkAnswer(event) {
   console.log(event.target.innerText);
   // sets reaction when answer clicked
-  if (event.target.innerText === questions[currentQuestion].correct) {
+  if (event.target.innerText === questions[currentQuestion-1].correct) {
     alert("Correct!");
     currentQuestion++;
     // nextQuestion();
-  } else if (event.target.innerText !== questions[currentQuestion].correct) {
+  } else if (event.target.innerText !== questions[currentQuestion-1].correct) {
     alert("Incorrect!");
     currentQuestion++;
     // nextQuestion();
@@ -139,5 +145,4 @@ startButton.addEventListener("click", setTime);
 //       for (i = 0; i < choices.length; i++) {
 //         choices[i].addEventListener("click", nextQuestion);
 //       }
-//     }
-//   }
+    // }
