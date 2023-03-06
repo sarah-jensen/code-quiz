@@ -6,6 +6,7 @@ const gameOver = document.querySelector(".game-over");
 const questionCard = document.querySelector(".questions");
 let currentQuestion = 0;
 
+
 // timer
 const timerEl = document.querySelector("#timer");
 let secondsLeft = 10;
@@ -45,42 +46,13 @@ let questions = [
   },
 ];
 
-// creates template literal (HTML outline) for the question cards
-let HTML = `
-  <div>
-      <h2>
-          ${questions[currentQuestion].question}
-      </h2>
-      <button class = "choices">
-          ${questions[currentQuestion].answers[0]}
-      </button>
-      <button class = "choices">
-          ${questions[currentQuestion].answers[1]}
-      </button>
-      <button class = "choices">
-          ${questions[currentQuestion].answers[2]}
-      </button>
-      <button class = "choices">
-          ${questions[currentQuestion].answers[3]}
-      </button>
-  </div>
-    `;
 
-questionCard.innerHTML = HTML;
-
-let choices = document.querySelectorAll(".choices");
-    currentQuestion++; //makes the current question !== 0
-// adds event listener to answer buttons
-for (let i = 0; i < choices.length; i++) {
-  choices[i].addEventListener("click", checkAnswer);
- 
-}
 
 // sets the timer
 function setTime() {
     startCard.style.display = "none";
     questionCard.style.display = "block";
-    // nextQuestion();
+    nextQuestion();
     const timer = setInterval(function () {
       secondsLeft--;
       timerEl.innerHTML = secondsLeft;
@@ -91,31 +63,60 @@ function setTime() {
     }, 1000);
   }
 
-// progresses to the next question
-// function nextQuestion() {
-//     //populates questions/answers
-//     if (currentQuestion !== 0) {
-//     }
-//     console.log(questions[currentQuestion]);
-//   }
-
-
-function checkAnswer(event) {
-  console.log(event.target.innerText);
-  // sets reaction when answer clicked
-  if (event.target.innerText === questions[currentQuestion-1].correct) {
-    alert("Correct!");
-    currentQuestion++;
-    // nextQuestion();
-  } else if (event.target.innerText !== questions[currentQuestion-1].correct) {
-    alert("Incorrect!");
-    currentQuestion++;
-    // nextQuestion();
-  } else if (currentQuestion === questions.length) {
-    endGame();
-  }
+// displays the next question
+function nextQuestion() {
+    currentQuestion++; //makes the current question !== 0
+    if (currentQuestion !== 0) {
+        console.log(questions[currentQuestion]);
+    }
+    
+    // creates template literal (HTML outline) for the question cards
+    let HTML = `
+    <div>
+    <h2>
+    ${questions[currentQuestion].question}
+    </h2>
+    <button class = "choices">
+    ${questions[currentQuestion].answers[0]}
+    </button>
+    <button class = "choices">
+    ${questions[currentQuestion].answers[1]}
+    </button>
+    <button class = "choices">
+    ${questions[currentQuestion].answers[2]}
+    </button>
+    <button class = "choices">
+    ${questions[currentQuestion].answers[3]}
+    </button>
+    </div>
+    `;
+    
+    questionCard.innerHTML = HTML;
+    
+    let choices = document.querySelectorAll(".choices");
+    
+    // adds event listener to answer buttons
+    for (let i = 0; i < choices.length; i++) {
+        choices[i].addEventListener("click", checkAnswer);
+    }
+    
+    function checkAnswer(event) {
+        console.log(event.target.innerText);
+        // sets reaction when answer clicked
+        if (event.target.innerText === questions[currentQuestion-1].correct) {
+            alert("Correct!");
+            // currentQuestion++;
+            nextQuestion();
+        } else if (event.target.innerText !== questions[currentQuestion-1].correct) {
+            alert("Incorrect!");
+            // currentQuestion++;
+            nextQuestion();
+        } else if (currentQuestion === questions.length) {
+            endGame();
+        }
+    }
+    
 }
-
 // displays "Game over" card
 function endGame() {
   questionCard.style.display = "none";
