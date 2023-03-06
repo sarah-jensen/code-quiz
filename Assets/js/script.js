@@ -1,9 +1,11 @@
 // button variables
 const startButton = document.querySelector("#start-button");
 const startCard = document.querySelector(".get-started");
-const highScores = document.querySelector(".high-scores");
+const highScores = document.querySelector(".score");
 const gameOver = document.querySelector(".game-over");
 const questionCard = document.querySelector(".questions");
+const submitButton = document.querySelector("#submit-button");
+const retakeButton = document.querySelector("#retake-quiz");
 let currentQuestion = 0;
 
 // timer
@@ -89,7 +91,7 @@ function setTime() {
     </button>
     </div>
     `;
-
+    // displays the template literal in the appropriate HTML section
     questionCard.innerHTML = HTML;
 
     let choices = document.querySelectorAll(".choices");
@@ -101,7 +103,7 @@ function setTime() {
 
     function checkAnswer(event) {
       console.log(event.target.innerText);
-      // sets reaction when answer clicked
+      // sets reaction for correct and incorrect answers
       if (event.target.innerText === questions[currentQuestion].correct) {
         alert("Correct!");
         currentQuestion++;
@@ -129,24 +131,24 @@ function setTime() {
 // event listener for "start" button
 startButton.addEventListener("click", setTime);
 
-// choices.addEventListener("click", checkAnswer);
+function showScores(event) {
+    console.log("scores");
+    gameOver.style.display = "none";
+    highScores.style.display = "block";
 
-// if (currentQuestion !== 0) {
-//   console.log(event.target.innerText);
-//   // console.log(questions[currentQuestion].correct);
-//   if (event.target.innerText === questions[currentQuestion - 1].correct) {
-//     alert("Correct!");
-//   } //incorrect
-//   else if (currentQuestion == questions.length) {
-//     return;
-//   }
+}
+// event listener for "submit" button
+submitButton.addEventListener("click", showScores);
 
-// "get question" implied loop driven by user click on buttons
-//   presents next question
 
-//       let choices = document.querySelectorAll(".choices");
-//       currentQuestion++;
-//       for (i = 0; i < choices.length; i++) {
-//         choices[i].addEventListener("click", nextQuestion);
-//       }
-// }
+
+
+
+
+// reload page when "retake quiz" button clicked
+function startOver(event) {
+    console.log("go again");
+    location.reload();
+}
+// event listener for "retake quiz" button
+retakeButton.addEventListener("click", startOver);

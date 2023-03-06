@@ -123,8 +123,8 @@ header {
     color: whitesmoke
 }
 
-.submit,
-.retake-quiz {
+#submit,
+#retake-quiz {
     background-color: var(--button-color);
     font-size: 20px;
 }
