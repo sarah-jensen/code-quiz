@@ -65,7 +65,7 @@ function setTime() {
 
 // displays the next question
 function nextQuestion() {
-    currentQuestion++; //makes the current question !== 0
+     //makes the current question !== 0
     if (currentQuestion !== 0) {
         console.log(questions[currentQuestion]);
     }
@@ -103,13 +103,13 @@ function nextQuestion() {
     function checkAnswer(event) {
         console.log(event.target.innerText);
         // sets reaction when answer clicked
-        if (event.target.innerText === questions[currentQuestion-1].correct) {
+        if (event.target.innerText === questions[currentQuestion].correct) {
             alert("Correct!");
-            // currentQuestion++;
+            currentQuestion++;
             nextQuestion();
-        } else if (event.target.innerText !== questions[currentQuestion-1].correct) {
+        } else if (event.target.innerText !== questions[currentQuestion].correct) {
             alert("Incorrect!");
-            // currentQuestion++;
+            currentQuestion++;
             nextQuestion();
         } else if (currentQuestion === questions.length) {
             endGame();
