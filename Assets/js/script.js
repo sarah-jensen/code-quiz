@@ -6,7 +6,6 @@ const gameOver = document.querySelector(".game-over");
 const questionCard = document.querySelector(".questions");
 let currentQuestion = 0;
 
-
 // timer
 const timerEl = document.querySelector("#timer");
 let secondsLeft = 10;
@@ -46,30 +45,30 @@ let questions = [
   },
 ];
 
-
-
 // sets the timer
 function setTime() {
-    startCard.style.display = "none";
-    questionCard.style.display = "block";
-    nextQuestion();
-    const timer = setInterval(function () {
-      secondsLeft--;
-      timerEl.innerHTML = secondsLeft;
-      if (secondsLeft === 0) {
-        clearInterval(timer);
-        endGame();
-      }
-    }, 1000);
-  }
-
-// displays the next question
-function nextQuestion() {
-     //makes the current question !== 0
-    if (currentQuestion !== 0) {
-        console.log(questions[currentQuestion]);
+  startCard.style.display = "none";
+  questionCard.style.display = "block";
+  nextQuestion();
+  const timer = setInterval(function () {
+    secondsLeft--;
+    timerEl.innerHTML = secondsLeft;
+    if (secondsLeft === 0) {
+      clearInterval(timer);
+      endGame();
     }
-    
+  }, 1000);
+
+  // displays the next question
+  function nextQuestion() {
+    //makes the current question !== 0
+    if (currentQuestion < questions.length - 1) {
+      console.log(questions[currentQuestion]);
+    } else if (currentQuestion === questions.length - 1) {
+      console.log("Game Over");
+      endGame();
+    }
+
     // creates template literal (HTML outline) for the question cards
     let HTML = `
     <div>
@@ -90,37 +89,41 @@ function nextQuestion() {
     </button>
     </div>
     `;
-    
+
     questionCard.innerHTML = HTML;
-    
+
     let choices = document.querySelectorAll(".choices");
-    
+
     // adds event listener to answer buttons
     for (let i = 0; i < choices.length; i++) {
-        choices[i].addEventListener("click", checkAnswer);
+      choices[i].addEventListener("click", checkAnswer);
     }
-    
+
     function checkAnswer(event) {
-        console.log(event.target.innerText);
-        // sets reaction when answer clicked
-        if (event.target.innerText === questions[currentQuestion].correct) {
-            alert("Correct!");
-            currentQuestion++;
-            nextQuestion();
-        } else if (event.target.innerText !== questions[currentQuestion].correct) {
-            alert("Incorrect!");
-            currentQuestion++;
-            nextQuestion();
-        } else if (currentQuestion === questions.length) {
-            endGame();
-        }
+      console.log(event.target.innerText);
+      // sets reaction when answer clicked
+      if (event.target.innerText === questions[currentQuestion].correct) {
+        alert("Correct!");
+        currentQuestion++;
+        nextQuestion();
+      } else if (
+        event.target.innerText !== questions[currentQuestion].correct
+      ) {
+        alert("Incorrect!");
+        currentQuestion++;
+        nextQuestion();
+      } else if (currentQuestion === questions.length) {
+        endGame();
+      }
     }
-    
-}
-// displays "Game over" card
-function endGame() {
-  questionCard.style.display = "none";
-  gameOver.style.display = "block";
+  }
+
+  // displays "Game over" card
+  function endGame() {
+    console.log("Wrap it up");
+    questionCard.style.display = "none";
+    gameOver.style.display = "block";
+  }
 }
 
 // event listener for "start" button
@@ -146,4 +149,4 @@ startButton.addEventListener("click", setTime);
 //       for (i = 0; i < choices.length; i++) {
 //         choices[i].addEventListener("click", nextQuestion);
 //       }
-    // }
+// }
