@@ -1,152 +1,161 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: var(--background-color);
-    color: var(--text);
-    padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--card-text);
+  padding: 20px;
 }
 
 header {
-    text-align: center;
-    font-size: 40px;
-    padding-top: 30px;
-    padding-left: 20px;
-    padding-right: 20px;
+  text-align: center;
+  font-size: 3em;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .subheader {
-    display: flex;
-    margin-top: 5%;
-    margin-right: 5%;
-    margin-left: 5%;
-    justify-content: space-between;
-
+  display: flex;
+  margin-top: 5%;
+  margin-right: 5%;
+  margin-left: 5%;
+  justify-content: space-around;
 }
 
 .high-scores,
 .time-box {
-    height: 100px;
-    width: 100px;
-    border: 5px solid var(--border);
-    text-align: center;
-    padding: 5px
+  height: 100px;
+  width: 100px;
+  border: 5px solid var(--border);
+  background-color: var(--card-background);
+  color: var(--card-text);
+  text-align: center;
+  padding: 5px;
 }
 
 .high-scores {
-    padding-top: 20px;
-    font-size: 25px;
+  padding-top: 20px;
+  font-size: 25px;
 }
 
 #timer {
-    border: 5px;
-    height: 40px;
-    margin-top: 8px;
-    padding-top: 4px;
-    font-size: 30px;
-    font-weight: bold;
-    text-align: center;
-    background-color: black;
-    color: whitesmoke; 
+  border: 5px;
+  height: 40px;
+  margin-top: 8px;
+  padding-top: 4px;
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  background-color: black;
+  color: whitesmoke;
 }
 
 .get-started {
-    display: block;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 5%;
-    height: 18em;;
-    width: 60%;
-    border: 5px solid var(--border);
-    text-align: center;
-    line-height: 2;
+  display: block;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+  height: 18em;
+  width: 60%;
+  border: 5px solid var(--border);
+  background-color: var(--card-background);
+  color: var(--card-text);
+  text-align: center;
+  line-height: 2;
 }
 
 .get-started h2 {
-    font-size: 35px;
-    padding-top: 5%;
+  font-size: 35px;
+  padding-top: 5%;
 }
 
 .get-started p {
-    font-size: 25px;
-    padding-bottom: 5%;
+  font-size: 25px;
+  padding-bottom: 5%;
 }
 
-#start-button {                                         
-    width: 20%;
-    height: 20%;
-    background-color: var(--button-color);
-    font-size: 20px;
-    align-self: center;
-    /* animation     */
+#start-button {
+  width: 20%;
+  height: 20%;
+  background-color: var(--button-color);
+  font-size: 20px;
+  align-self: center;
+  /* animation     */
 }
 
 .questions {
-        display: none;
-        align-content: left;
-        margin-left: 20%;
-        margin-right: 20%;
-        margin-top: 5%;
-        height: 20em;
-        width: 60%;
-        border: 5px solid var(--border);
-        text-align: left;
-        line-height: 1.5;
+  display: none;
+  align-content: left;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+  height: 20em;
+  width: 60%;
+  border: 5px solid var(--border);
+  background-color: var(--card-background);
+  color: var(--card-text);
+  text-align: left;
+  line-height: 1.5;
 }
 
 .questions button {
-    background-color: var(--button-color);
+  background-color: var(--button-color);
 }
 
 #flash-response {
-    display:none;
+  display: none;
 }
 
 .game-over {
-    display: none;
-    justify-content: center;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 5%;
-    height: 60%;
-    width: 60%;
-    border: 5px solid var(--border);
-    text-align: center;
-    line-height: 2.0;
-    font-size: 25px;
+  display: none;
+  justify-content: center;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+  height: 60%;
+  width: 60%;
+  border: 5px solid var(--border);
+  background-color: var(--card-background);
+  color: var(--card-text);
+  text-align: center;
+  line-height: 2;
+  font-size: 25px;
 }
 
 #player-name {
-    background-color: black;
-    color: whitesmoke
+  background-color: black;
+  color: whitesmoke;
 }
 
-#submit,
+#submit-button,
 #retake-quiz {
-    background-color: var(--button-color);
-    font-size: 20px;
+  background-color: var(--button-color);
+  font-size: 20px;
 }
 
 .score {
-    display: none;
-    margin-left: 20%;
-    margin-right: 20%;
-    margin-top: 5%;
-    height: 60%;
-    width: 60%;
-    border: 5px solid var(--border);
-    text-align: center;
-    line-height: 1.5;
-    font-size: 28px;
+  display: none;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-top: 5%;
+  height: 60%;
+  width: 60%;
+  border: 5px solid var(--border);
+  background-color: var(--card-background);
+  color: var(--card-text);
+  text-align: center;
+  line-height: 1.5;
+  font-size: 28px;
 }
 
 .score h2 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .rank {
-    padding-left: 5%;
-    text-align: left;
+  padding-left: 5%;
+  text-align: left;
 }
