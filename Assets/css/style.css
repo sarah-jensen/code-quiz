@@ -37,9 +37,10 @@ header {
 }
 
 .high-scores {
-  padding-top: 20px;
+  padding: 1%;
   font-size: 25px;
 }
+
 
 #timer {
   border: 5px;
@@ -139,7 +140,8 @@ header {
 }
 
 #submit-button,
-#retake-quiz {
+#retake-quiz,
+#try-again {
   background-color: var(--button-color);
   font-size: 20px;
 }
