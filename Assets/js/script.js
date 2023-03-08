@@ -6,13 +6,14 @@ const gameOver = document.querySelector(".game-over");
 const questionCard = document.querySelector(".questions");
 const submitButton = document.querySelector("#submit-button");
 const retakeButton = document.querySelector("#retake-quiz");
-let currentQuestion = [0];
+let currentQuestion = 0;
 let questionText = document.querySelector(".question-text");
 let answerA = document.querySelector("#answer-a");
 let answerB = document.querySelector("#answer-b");
 let answerC = document.querySelector("#answer-c");
 let answerD = document.querySelector("#answer-d");
 let userName = document.querySelector("#player-name");
+let alert = document.querySelector("#feedback");
 let scoreCounter = 0;
 
 // timer
@@ -24,43 +25,23 @@ let questions = [
   {
     question:
       "You can chain together actions/methods in which programming language?",
-    answers: [
-      "A. JavaScript", 
-      "B. Bootstrap", 
-      "C. CSS", 
-      "D. jQuery"
-    ],
-    correct: "D. jQuery",
+    answers: ["A. JavaScript", "B. Bootstrap", "C. CSS", "D. jQuery"],
+    correct: "answer-d",
   },
   {
     question: "Which language is needed for a user to interact with a webpage?",
-    answers: [
-      "A. CSS", 
-      "B. JavaScript", 
-      "C. HTML", 
-      "D. GitHub"
-    ],
-    correct: "B. JavaScript",
+    answers: ["A. CSS", "B. JavaScript", "C. HTML", "D. GitHub"],
+    correct: "answer-b",
   },
   {
     question: "In JavaScript, a group of related data is called a/an...",
-    answers: [
-      "A. string", 
-      "B. object", 
-      "C. array", 
-      "D. function"
-    ],
-    correct: "C. array",
+    answers: ["A. string", "B. object", "C. array", "D. function"],
+    correct: "answer-c",
   },
   {
     question: "Media queries are feature of which language?",
-    answers: [
-      "A. JavaScript", 
-      "B. HTML", 
-      "C. CSS", 
-      "D. jQuery"
-    ],
-    correct: "C. CSS",
+    answers: ["A. JavaScript", "B. HTML", "C. CSS", "D. jQuery"],
+    correct: "answer-c",
   },
   {
     question: "To use a function in JavaSript, you must...",
@@ -70,7 +51,7 @@ let questions = [
       "C. give a condition for the function",
       "D. a & b only",
     ],
-    correct: "D. a & b only",
+    correct: "answer-d",
   },
 ];
 
@@ -89,6 +70,36 @@ function setTime() {
     }
   }, 1000);
 
+      // set reaction for correct and incorrect answers
+      function checkAnswer(event) {
+        console.log(event.target.textContent);
+        if (event.target.id === questions[currentQuestion].correct) {
+          // display Correct message
+          alert.innerHTML = "Correct!";
+          // clear Correct message
+          setTimeout(function () {
+            alert.innerHTML = "";
+          }, 1000);
+          console.log("correct");
+          currentQuestion++;
+          scoreCounter++;
+          nextQuestion();
+        } else if (
+          event.target.textContent !== questions[currentQuestion].correct
+        ) {
+          // display incorrect message
+          alert.innerHTML = "Incorrect";
+          // clear incorrect message
+          setTimeout(function () {
+            alert.innerHTML = "";
+          }, 1000);
+          console.log("incorrect");
+          currentQuestion++;
+          secondsLeft = secondsLeft - 5;
+          nextQuestion();
+        }
+      }
+
   // displays the next question
   function nextQuestion() {
     //makes the current question !== 0
@@ -104,31 +115,6 @@ function setTime() {
       endGame();
     }
 
-    // creates template literal (HTML outline) for the question cards
-    // move this to populate HTML instead
-    // let HTML = `
-    // <div>
-    // <h2>
-    // ${questions[currentQuestion].question}
-    // </h2>
-    // <button class = "choices">
-    // ${questions[currentQuestion].answers[0]}
-    // </button>
-    // <button class = "choices">
-    // ${questions[currentQuestion].answers[1]}
-    // </button>
-    // <button class = "choices">
-    // ${questions[currentQuestion].answers[2]}
-    // </button>
-    // <button class = "choices">
-    // ${questions[currentQuestion].answers[3]}
-    // </button>
-    // </div>
-    // `;
-
-    // displays the template literal in the appropriate HTML section
-    // questionCard.innerHTML = HTML;
-
     let choices = document.querySelectorAll(".choices");
 
     // adds event listener to answer buttons
@@ -136,21 +122,7 @@ function setTime() {
       choices[i].addEventListener("click", checkAnswer);
     }
 
-    // set reaction for correct and incorrect answers
-    function checkAnswer(event) {
-      console.log(event.target.textContent);
-      if (event.target.textContent === questions[currentQuestion].correct) {
-        alert("Correct!");
-        currentQuestion++;
-        scoreCounter++;
-        nextQuestion();
-      } else if (event.target.textContent !== questions[currentQuestion].correct) {
-        alert("Incorrect!");
-        currentQuestion++;
-        secondsLeft = secondsLeft - 5;
-        nextQuestion();
-      }
-    }
+
   }
 
   // track correct answers in local storage
