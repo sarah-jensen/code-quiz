@@ -75,6 +75,7 @@ function setTime() {
     }
 
     // creates template literal (HTML outline) for the question cards
+    // move this to populate HTML instead
     let HTML = `
     <div>
     <h2>
