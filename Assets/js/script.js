@@ -6,6 +6,8 @@ const gameOver = document.querySelector(".game-over");
 const questionCard = document.querySelector(".questions");
 const submitButton = document.querySelector("#submit-button");
 const retakeButton = document.querySelector("#retake-quiz");
+const tryAgainButton = document.querySelector("#try-again");
+const highScoreBtn = document.querySelector(".high-scores")
 let currentQuestion = 0;
 let questionText = document.querySelector(".question-text");
 let answerA = document.querySelector("#answer-a");
@@ -161,6 +163,8 @@ function setUserName() {
 function showScores() {
   console.log("scores");
   gameOver.style.display = "none";
+  startCard.style.display = "none";
+  questionCard.style.display = "none";
   highScores.style.display = "block";
   renderScore();
 
@@ -177,10 +181,20 @@ submitButton.addEventListener("click", setUserName);
 
 // display user name on high score page
 
+
 // reload page when "retake quiz" button clicked
 function startOver() {
   console.log("go again");
+  gameOver.style.display = "none";
+  startCard.style.display = "block";
+  questionCard.style.display = "none";
+  highScores.style.display = "none";
   location.reload();
 }
 // event listener for "retake quiz" button
 retakeButton.addEventListener("click", startOver);
+
+tryAgainButton.addEventListener("click", startOver);
+
+// event listener for "high scores" button
+highScoreBtn.addEventListener("click", showScores);
