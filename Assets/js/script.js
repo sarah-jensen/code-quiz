@@ -191,9 +191,10 @@ function startOver() {
   highScores.style.display = "none";
   location.reload();
 }
-// event listener for "retake quiz" button
+// event listener for "retake quiz" button on game-over card
 retakeButton.addEventListener("click", startOver);
 
+// event listener for "try again" button on high scores card
 tryAgainButton.addEventListener("click", startOver);
 
 // event listener for "high scores" button
