@@ -7,7 +7,8 @@ const questionCard = document.querySelector(".questions");
 const submitButton = document.querySelector("#submit-button");
 const retakeButton = document.querySelector("#retake-quiz");
 const tryAgainButton = document.querySelector("#try-again");
-const highScoreBtn = document.querySelector(".high-scores")
+const highScoreBtn = document.querySelector(".high-scores");
+const scoreList = document.querySelector(".rank");
 let currentQuestion = 0;
 let questionText = document.querySelector(".question-text");
 let answerA = document.querySelector("#answer-a");
@@ -17,6 +18,7 @@ let answerD = document.querySelector("#answer-d");
 let userName = document.querySelector("#player-name");
 let alert = document.querySelector("#feedback");
 let scoreCounter = 0;
+let scores = [];
 
 // timer
 const timerEl = document.querySelector("#timer");
@@ -72,35 +74,35 @@ function setTime() {
     }
   }, 1000);
 
-      // set reaction for correct and incorrect answers
-      function checkAnswer(event) {
-        console.log(event.target.textContent);
-        if (event.target.id === questions[currentQuestion].correct) {
-          // display Correct message
-          alert.innerHTML = "Correct!";
-          // clear Correct message
-          setTimeout(function () {
-            alert.innerHTML = "";
-          }, 1000);
-          console.log("correct");
-          currentQuestion++;
-          scoreCounter++;
-          nextQuestion();
-        } else if (
-          event.target.textContent !== questions[currentQuestion].correct
-        ) {
-          // display incorrect message
-          alert.innerHTML = "Incorrect";
-          // clear incorrect message
-          setTimeout(function () {
-            alert.innerHTML = "";
-          }, 1000);
-          console.log("incorrect");
-          currentQuestion++;
-          secondsLeft = secondsLeft - 5;
-          nextQuestion();
-        }
-      }
+  // set reaction for correct and incorrect answers
+  function checkAnswer(event) {
+    console.log(event.target.textContent);
+    if (event.target.id === questions[currentQuestion].correct) {
+      // display Correct message
+      alert.innerHTML = "Correct!";
+      // clear Correct message
+      setTimeout(function () {
+        alert.innerHTML = "";
+      }, 1000);
+      console.log("correct");
+      currentQuestion++;
+      scoreCounter++;
+      nextQuestion();
+    } else if (
+      event.target.textContent !== questions[currentQuestion].correct
+    ) {
+      // display incorrect message
+      alert.innerHTML = "Incorrect";
+      // clear incorrect message
+      setTimeout(function () {
+        alert.innerHTML = "";
+      }, 1000);
+      console.log("incorrect");
+      currentQuestion++;
+      secondsLeft = secondsLeft - 5;
+      nextQuestion();
+    }
+  }
 
   // displays the next question
   function nextQuestion() {
@@ -123,8 +125,6 @@ function setTime() {
     for (let i = 0; i < choices.length; i++) {
       choices[i].addEventListener("click", checkAnswer);
     }
-
-
   }
 
   // track correct answers in local storage
@@ -145,41 +145,49 @@ function setTime() {
 // event listener for "start" button
 startButton.addEventListener("click", setTime);
 
-// create object with name and score
-let userScore = {
-  name: userName.value,
-  score: scoreCounter.value,
-};
+
+// display userScore from local storage
+function renderScore() {
+  scoreList.innerHTML = "";
+  
+  // create object with name and score
+  let userScore = {
+    name: JSON.parse(localStorage.getItem("userName")),
+    score: JSON.parse(localStorage.getItem("userScore")),
+  };
+
+  for (let i = 0; i < scores.length; i++) {
+    let scores = scores[i];
+
+    let li = document.createElement("li");
+    li.textContent = userScore;
+    scoreList.appendChild(li);
+  }
+}
 
 // save userName in local storage
 function setUserName() {
   console.log("save name");
-  console.log(userName.val);
   let newUserName = $("#player-name")[0].value;
   console.log(newUserName);
   localStorage.setItem("userName", JSON.stringify(newUserName));
+  renderScore();
 }
 
+
+// display high scores
 function showScores() {
   console.log("scores");
   gameOver.style.display = "none";
   startCard.style.display = "none";
   questionCard.style.display = "none";
   highScores.style.display = "block";
-  renderScore();
+  renderScore();}
 
-  // display userScore from local storage
-  function renderScore() {
-    let showName = JSON.parse(localStorage.getItem("userScore"));
-    document.querySelector(".rank").textContent = showName;
-  }
-}
 // event listener for "submit" button
 submitButton.addEventListener("click", setUserName);
 
 // event.preventDefault();
-
-// display user name on high score page
 
 
 // reload page when "retake quiz" button clicked
